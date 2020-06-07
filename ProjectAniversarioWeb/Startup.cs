@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ProjectAniversarioWeb.Data;
 
 namespace ProjectAniversarioWeb
 {
@@ -33,6 +35,10 @@ namespace ProjectAniversarioWeb
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ProjectAniversarioWebContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("ProjectAniversarioWebContext"), builder =>
+            builder.MigrationsAssembly("ProjectAniversarioWeb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

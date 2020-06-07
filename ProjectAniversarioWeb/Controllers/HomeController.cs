@@ -17,7 +17,8 @@ namespace ProjectAniversarioWeb.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Gerenciador de Aniversarios";
+            ViewData["aluno"] = "natan borges";
 
             return View();
         }
