@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProjectAniversarioWeb.Data;
+using ProjectAniversarioWeb.Services;
 
 namespace ProjectAniversarioWeb
 {
@@ -39,6 +40,9 @@ namespace ProjectAniversarioWeb
             services.AddDbContext<ProjectAniversarioWebContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("ProjectAniversarioWebContext"), builder =>
             builder.MigrationsAssembly("ProjectAniversarioWeb")));
+
+            services.AddScoped<AniversarioService>();
+            services.AddScoped<AniversariantesBuscaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

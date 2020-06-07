@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjectAniversarioWeb.Models.Aniversariante>
+@{
+    ViewData["Title"] = "PesquisaNome";
+}
+
+<h2>Pesquisa por nome</h2>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>
+                        @Html.DisplayNameFor(model => model.primeiroNome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.segundoNome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dataAniversario)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.primeiroNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.segundoNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dataAniversario)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.primeiroNome">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.primeiroNome">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.primeiroNome">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
