@@ -12,6 +12,7 @@ namespace ProjectAniversarioWeb.Services
     {
         private readonly ProjectAniversarioWebContext _context;
 
+
         public AniversariantesBuscaService(ProjectAniversarioWebContext context)
         {
             _context = context;
@@ -22,6 +23,14 @@ namespace ProjectAniversarioWeb.Services
             result = result.Where(x => x.nomeCompleto.Contains(nome));
             return await result
                 .OrderByDescending(x => x.primeiroNome)
+                .ToListAsync();
+        }
+        public async Task<List<Aniversariante>> buscarPorDataAsync(DateTime data)
+        {
+            var result = from obj in _context.Aniversariante select obj;
+            result = result.Where(x => x.dataAniversario == data);
+            return await result
+                .OrderByDescending(x => x.dataAniversario)
                 .ToListAsync();
         }
     }

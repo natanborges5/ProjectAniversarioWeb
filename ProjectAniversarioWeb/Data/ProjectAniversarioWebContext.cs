@@ -16,4 +16,5 @@ namespace ProjectAniversarioWeb.Data
 
         public DbSet<ProjectAniversarioWeb.Models.Aniversariante> Aniversariante { get; set; }
     }
+
 }
